@@ -2136,7 +2136,10 @@ module.exports = Root = (function(_super) {
         width: this.width,
         height: this.height,
         resources: {
-          layerComps: this.psd.resources.resource('layerComps')["export"](),
+          layerComps: (function(self){
+                var _layerComps = self.psd.resources.resource('layerComps');
+                if(_layerComps)return _layerComps["export"];
+          })(this),
           guides: [],
           slices: []
         }

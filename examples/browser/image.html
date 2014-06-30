@@ -56,7 +56,9 @@
       e.preventDefault();
 
       PSD.fromEvent(e).then(function (psd) {
-        var data = JSON.stringify(psd.tree().export(), undefined, 2);
+         var tree = psd.tree();
+        var exp = tree.export();
+        var data = JSON.stringify(exp,undefined,2);
         document.getElementById('data').innerHTML = data;
         psd.image.toPng().then(function (image) {
           document.getElementById('image').appendChild(image);
