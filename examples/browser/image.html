@@ -58,12 +58,26 @@
       PSD.fromEvent(e).then(function (psd) {
          var tree = psd.tree();
         var exp = tree.export();
+        getChild(exp);
         var data = JSON.stringify(exp,undefined,2);
         document.getElementById('data').innerHTML = data;
         psd.image.toPng().then(function (image) {
           document.getElementById('image').appendChild(image);
         });
       });
+    }
+    function getChild(parent){
+      var children = parent.children();
+      if(children.length > 0){
+        for(var i in parent){
+        var _child = parent[i];
+        console.log(_child.name);
+        if(_child.children().length >0){
+          getChild(_child);
+        }
+      }
+      }
+      
     }
   }());
   </script>
