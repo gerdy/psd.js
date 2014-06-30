@@ -67,12 +67,13 @@
       });
     }
     function getChild(parent){
-      var children = parent.children();
+      var children = parent.children,
+        _child;
       if(children.length > 0){
         for(var i in parent){
-        var _child = parent[i];
+        _child = parent[i];
         console.log(_child.name);
-        if(_child.children().length >0){
+        if(_child.children){
           getChild(_child);
         }
       }
