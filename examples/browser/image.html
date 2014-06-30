@@ -70,13 +70,13 @@
       var children = parent.children,
         _child;
       if(children.length > 0){
-        for(var i in parent){
-        _child = parent[i];
-        console.log(_child.name);
-        if(_child.children){
-          getChild(_child);
+        for(var i in children){
+          _child = children[i];
+          console.log(_child.name);
+          if(_child.children){
+            getChild(_child);
+          }
         }
-      }
       }
       
     }
