@@ -2396,6 +2396,9 @@ module.exports = Util = (function() {
 
   Util.getUnicodeCharacter = function(cp) {
     var first, second;
+    if(cp>0x07FF){
+      debugger;
+    }
     if (cp >= 0 && cp <= 0xD7FF || cp >= 0xE000 && cp <= 0xFFFF) {
       return String.fromCharCode(cp);
     } else if (cp >= 0x10000 && cp <= 0x10FFFF) {
