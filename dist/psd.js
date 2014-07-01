@@ -532,9 +532,10 @@ module.exports = File = (function() {
       length = null;
     }
     length || (length = this.readInt());
-    return this.read(length * 2).map(function(c) {
+    var _unicode = this.read(length * 2).map(function(c) {
       return Util.getUnicodeCharacter(c);
-    }).join('').replace(/\u0000/g, '');
+    }).join('');
+    return _unicode.replace(/\u0000/g, '');
   };
 
   File.prototype.readByte = function() {
