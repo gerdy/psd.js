@@ -72,7 +72,7 @@
       if(children.length > 0){
         for(var i in children){
           _child = children[i];
-          if(_child.name.match(/{\S+?}/g)){
+          if(_child.name.match(/{\S{0,}}/g)){
             console.log(_child.name);
           }
           if(_child.children){
