@@ -58,6 +58,7 @@
       PSD.fromEvent(e).then(function (psd) {
          var tree = psd.tree();
         var exp = tree.export();
+        window.arr = [];
         getChild(exp);
         var data = JSON.stringify(exp,undefined,2);
         document.getElementById('data').innerHTML = data;
@@ -73,6 +74,9 @@
         for(var i in children){
           _child = children[i];
           if(_child.name.match(/{\S{0,}}/g)){
+            if(_child.name.indexOf("{}")>-1){
+              arr.push(children.splice(i-0,1));
+            }
             console.log(_child.name);
           }
           if(_child.children){
