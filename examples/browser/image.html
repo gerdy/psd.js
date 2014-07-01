@@ -57,9 +57,10 @@
 
       PSD.fromEvent(e).then(function (psd) {
          var tree = psd.tree();
+         window.arr = [];
+         getChild(tree);
         var exp = tree.export();
-        window.arr = [];
-        getChild(exp);
+        
         var data = JSON.stringify(exp,undefined,2);
         document.getElementById('data').innerHTML = data;
         psd.image.toPng().then(function (image) {
@@ -68,7 +69,7 @@
       });
     }
     function getChild(parent){
-      var children = parent.children,
+      var children = parent.children(),
         _child;
       if(children.length > 0){
         for(var i in children){
