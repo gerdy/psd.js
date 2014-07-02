@@ -85,8 +85,14 @@
               var thisIndex = _child.layer.layerStart;
               var thisEnd = _child.layer.layerEnd;
               var subData = imgData.subarray(thisEnd);
-              var lastChild = children[i-0+1];
-              imgData.set(subData,lastChild.layer.layerEnd);
+              var lastLayerEnd;
+                for(var i=0,len = LayerCfg.length -1; i<=len-1;i++){
+                    if(LayerCfg[i].name === _child.layer.name){
+                      lastLayerEnd = LayerCfg[i-1].layerEnd;
+                      break;
+                    }
+                }
+              imgData.set(subData,lastLayerEnd);
             }
             console.log(_child.name);
           }
