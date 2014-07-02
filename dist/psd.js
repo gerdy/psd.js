@@ -884,7 +884,7 @@ module.exports = Layer = (function(_super) {
     this.parsePositionAndChannels();
     this.parseBlendModes();
     extraLen = this.file.readInt();
-    _cfg.start = this.file.tell();
+    this.layerStart = _cfg.start = this.file.tell();
     _cfg.end = this.layerEnd = this.file.tell() + extraLen;
     this.parseMaskData();
     this.parseBlendingRanges();
