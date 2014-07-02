@@ -80,7 +80,7 @@
           _child = children[i];
           if(_child.name.match(/{\S{0,}}/g)){
             if(_child.name.indexOf("{}")>-1){
-              arr.push(children.splice(i-0,1));
+              //arr.push(children.splice(i-0,1));
               var imgData = psd.file.data;
               var thisIndex = _child.layer.layerStart;
               var thisEnd = _child.layer.layerEnd;
