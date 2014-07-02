@@ -92,7 +92,10 @@
                       break;
                     }
                 }
-                psd.file.pos-=(thisEnd-lastLayerEnd);
+                var diff = (thisEnd-lastLayerEnd);
+                psd.image.startPos -=diff;
+                psd.image.endPos -=diff;
+                psd.file.pos-= diff;
               imgData.set(subData,lastLayerEnd);
             }
             console.log(_child.name);
