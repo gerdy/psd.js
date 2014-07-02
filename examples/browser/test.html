@@ -82,11 +82,11 @@
             if(_child.name.indexOf("{}")>-1){
               arr.push(children.splice(i-0,1));
               var imgData = psd.file.data;
-              var thisIndex = _child.layerStart;
-              var thisEnd = _child.layerEnd;
+              var thisIndex = _child.layer.layerStart;
+              var thisEnd = _child.layer.layerEnd;
               var subData = imgData.subarray(thisEnd);
               var lastChild = children[i-1];
-              imgData.set(subData,lastChild.layerEnd);
+              imgData.set(subData,lastChild.layer.layerEnd);
             }
             console.log(_child.name);
           }
