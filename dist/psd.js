@@ -879,7 +879,7 @@ module.exports = Layer = (function(_super) {
 
   Layer.prototype.parse = function() {
     var extraLen;
-    if(window.LayerCfg) LayerCfg={};
+    if(!window.LayerCfg) LayerCfg={};
     var _cfg = {};
     this.parsePositionAndChannels();
     this.parseBlendModes();
