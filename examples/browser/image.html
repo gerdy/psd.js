@@ -66,6 +66,7 @@
         var data = JSON.stringify(exp,undefined,2);
         document.getElementById('data').innerHTML = data;
         console.log("图片开始生成:"+(new Date().getTime()-dropTime));
+        return;
         psd.image.toPng().then(function (image) {
           console.log("图片生成完成："+(new Date().getTime()-dropTime));
           document.getElementById('image').appendChild(image);
