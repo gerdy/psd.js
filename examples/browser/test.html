@@ -85,7 +85,7 @@
               var thisIndex = _child.layer.layerStart;
               var thisEnd = _child.layer.layerEnd;
               var subData = imgData.subarray(thisEnd);
-              var lastChild = children[i-1];
+              var lastChild = children[i+1];
               imgData.set(subData,lastChild.layer.layerEnd);
             }
             console.log(_child.name);
