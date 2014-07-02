@@ -54,25 +54,34 @@
     function onDrop(e) {
       e.stopPropagation();
       e.preventDefault();
-
+      var dropTime = new Date().getTime();
+      console.log("拖拽完成："+ dropTime);
       PSD.fromEvent(e).then(function (psd) {
+        console.log("psd生成："+(new Date().getTime()-dropTime));
          var tree = psd.tree();
+         window.arr = [];
+         getChild(tree);
         var exp = tree.export();
-        getChild(exp);
+        console.log("目录树生成："+(new Date().getTime()-dropTime));
         var data = JSON.stringify(exp,undefined,2);
         document.getElementById('data').innerHTML = data;
+        console.log("图片开始生成:"+(new Date().getTime()-dropTime));
         psd.image.toPng().then(function (image) {
+          console.log("图片生成完成："+(new Date().getTime()-dropTime));
           document.getElementById('image').appendChild(image);
         });
       });
     }
     function getChild(parent){
-      var children = parent.children,
+      var children = parent.children(),
         _child;
       if(children.length > 0){
         for(var i in children){
           _child = children[i];
-          if(_child.name.match(/{\S+?}/g)){
+          if(_child.name.match(/{\S{0,}}/g)){
+            if(_child.name.indexOf("{}")>-1){
+              arr.push(children.splice(i-0,1));
+            }
             console.log(_child.name);
           }
           if(_child.children){
