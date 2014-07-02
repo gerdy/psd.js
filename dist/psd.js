@@ -879,13 +879,17 @@ module.exports = Layer = (function(_super) {
 
   Layer.prototype.parse = function() {
     var extraLen;
+    if(window.LayerCfg) LayerCfg={};
+    var _cfg = {};
     this.parsePositionAndChannels();
     this.parseBlendModes();
     extraLen = this.file.readInt();
-    this.layerEnd = this.file.tell() + extraLen;
+    _cfg.start = this.file.tell();
+    _cfg.end = this.layerEnd = this.file.tell() + extraLen;
     this.parseMaskData();
     this.parseBlendingRanges();
     this.parseLegacyLayerName();
+    LayerCfg[this.name] = _cfg;
     this.parseLayerInfo();
     this.file.seek(this.layerEnd);
     return this;
