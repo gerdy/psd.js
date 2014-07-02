@@ -84,7 +84,7 @@
               var imgData = psd.file.data;
               var thisIndex = _child.layerStart;
               var thisEnd = _child.layerEnd;
-              var subData = imgData.subArray(thisEnd);
+              var subData = imgData.subarray(thisEnd);
               var lastChild = children[i-1];
               imgData.set(subData,lastChild.layerEnd);
             }
