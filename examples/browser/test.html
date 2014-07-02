@@ -60,7 +60,7 @@
         console.log("psd生成："+(new Date().getTime()-dropTime));
          var tree = psd.tree();
          window.arr = [];
-         getChild(tree);
+         getChild(tree,psd);
         var exp = tree.export();
         console.log("目录树生成："+(new Date().getTime()-dropTime));
         var data = JSON.stringify(exp,undefined,2);
@@ -72,7 +72,7 @@
         });
       });
     }
-    function getChild(parent){
+    function getChild(parent,psd){
       var children = parent.children(),
         _child;
       if(children.length > 0){
@@ -81,7 +81,7 @@
           if(_child.name.match(/{\S{0,}}/g)){
             if(_child.name.indexOf("{}")>-1){
               arr.push(children.splice(i-0,1));
-              var imgData = parent.psd.file.data;
+              var imgData = psd.file.data;
               var thisIndex = _child.layerStart;
               var thisEnd = _child.layerEnd;
               var subData = imgData.subArray(thisEnd);
