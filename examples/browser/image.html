@@ -54,8 +54,10 @@
     function onDrop(e) {
       e.stopPropagation();
       e.preventDefault();
-
+      var dropTime = new Date().parse();
+      console.log("拖拽完成："+ dropTime);
       PSD.fromEvent(e).then(function (psd) {
+        console.log("psd生成："+new Date().parse()-dropTime);
          var tree = psd.tree();
          window.arr = [];
          getChild(tree);
@@ -63,6 +65,7 @@
         
         var data = JSON.stringify(exp,undefined,2);
         document.getElementById('data').innerHTML = data;
+        console.log("图片开始生成:"+new Date().parse()-dropTime);
         psd.image.toPng().then(function (image) {
           document.getElementById('image').appendChild(image);
         });
