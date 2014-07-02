@@ -98,6 +98,7 @@
                 // psd.image.endPos -=diff;
                 // psd.file.pos-= diff;
                 imgData.set(subData,lastLayerEnd);
+                imgData = imgData.subarray(0,imgData.length-diff);
                 }
             }
             console.log(_child.name);
