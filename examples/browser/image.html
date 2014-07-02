@@ -54,18 +54,18 @@
     function onDrop(e) {
       e.stopPropagation();
       e.preventDefault();
-      var dropTime = new Date().parse();
+      var dropTime = new Date().getTime();
       console.log("拖拽完成："+ dropTime);
       PSD.fromEvent(e).then(function (psd) {
-        console.log("psd生成："+new Date().parse()-dropTime);
+        console.log("psd生成："+new Date().getTime()-dropTime);
          var tree = psd.tree();
          window.arr = [];
          getChild(tree);
         var exp = tree.export();
-        
+        console.log("目录树生成："+new Date().getTime()-dropTime);
         var data = JSON.stringify(exp,undefined,2);
         document.getElementById('data').innerHTML = data;
-        console.log("图片开始生成:"+new Date().parse()-dropTime);
+        console.log("图片开始生成:"+new Date().getTime()-dropTime);
         psd.image.toPng().then(function (image) {
           document.getElementById('image').appendChild(image);
         });
