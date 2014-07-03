@@ -86,9 +86,9 @@
               var thisEnd = _child.layer.layerEnd;
               var subData = imgData.subarray(thisEnd);
               var lastLayerEnd;
-                for(var i=0,len = LayerCfg.length -1; i<=len-1;i++){
-                    if(LayerCfg[i].name === _child.layer.name){
-                      lastLayerEnd = LayerCfg[i-1].end;
+                for(var n=0,len = LayerCfg.length -1; n<=len-1;n++){
+                    if(LayerCfg[n].name === _child.layer.name){
+                      lastLayerEnd = LayerCfg[n-1].end;
                       break;
                     }
                 }
