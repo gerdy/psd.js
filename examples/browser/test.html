@@ -94,7 +94,8 @@
                 }
                 if(location.href.indexOf("test=true") >-1){
                   var diff = (thisEnd-lastLayerEnd);
-                  psd.image.obj.startPos -=diff;              
+                  psd.image.obj.startPos -=diff;
+                  psd.image.obj.file.pos -=diff;              
                 //psd.image.startPos -=diff;
                 // psd.image.endPos -=diff;
                 psd.file.pos-= diff;
